@@ -11,18 +11,31 @@ export class HomeComponent implements OnInit {
 
   @Input() title: string;
 
-  @Input() contador = 1;
-  @Output() contadorAtualizado = new EventEmitter();
+  @Input() contador: number;
+  @Output() contadorChange = new EventEmitter();
 
   incrementar() {
     this.contador++;
-    this.contadorAtualizado.emit(this.contador);
+    this.contadorChange.emit(this.contador);
   }
 
   decrmentar() {
     this.contador--;
-    this.contadorAtualizado.emit(this.contador);
+    this.contadorChange.emit(this.contador);
   }
+
+  // @Input() contador = 1;
+  // @Output() contadorAtualizado = new EventEmitter();
+
+  // incrementar() {
+  //   this.contador++;
+  //   this.contadorAtualizado.emit(this.contador);
+  // }
+
+  // decrmentar() {
+  //   this.contador--;
+  //   this.contadorAtualizado.emit(this.contador);
+  // }
 
   ngOnInit(): void {
   }
