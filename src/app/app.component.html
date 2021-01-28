@@ -1,5 +1,9 @@
 <app-header></app-header>
 
-<app-home></app-home>
+<app-home
+[title]="title"
+[contador]="0"
+(contadorAtualizado)="onContadorAtualizado($event)"
+></app-home>
 
 <app-footer></app-footer>

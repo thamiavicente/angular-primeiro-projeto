@@ -8,7 +8,12 @@ import { Component } from '@angular/core';
 
 export class AppComponent {
 
-  constructor() {
+  title = "Breath and count";
 
+  onContadorAtualizado(contadorFinal) {
+    console.log('Contador atualizado:' + contadorFinal);
   }
+
+  constructor() { }
+
 }
