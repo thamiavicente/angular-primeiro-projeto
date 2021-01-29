@@ -1,0 +1,13 @@
+<h1>Memes</h1>
+
+<ul>
+    <li *ngFor="let memesCategorizados of MEMES_AGRUPADOS_POR_CATEGORIA">
+        {{memesCategorizados.categoria}}
+        <div *ngFor="let meme of memesCategorizados.memes; let par = even">
+            <img [src]="PREFIXO_IMG_URL + meme.imagemURL" *ngIf="par; else blocoPar"/>
+            <ng-template #blocoPar>
+                <h2>Par</h2>
+            </ng-template>
+        </div>
+    </li>
+</ul>

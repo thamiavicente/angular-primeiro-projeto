@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
+import { MemesLinguagensComponent } from './memes-linguagens/memes-linguagens.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     HomeComponent,
-    FooterComponent
+    FooterComponent,
+    MemesLinguagensComponent
   ],
   imports: [
     BrowserModule,
