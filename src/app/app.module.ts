@@ -9,6 +9,7 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { HomeComponent } from './home/home.component';
 import { MemesLinguagensComponent } from './memes-linguagens/memes-linguagens.component';
+import { FolhetoMercadoComponent } from './folheto-mercado/folheto-mercado.component';
 
 registerLocaleData(localeFr, 'pt');
 
@@ -18,7 +19,8 @@ registerLocaleData(localeFr, 'pt');
     HeaderComponent,
     HomeComponent,
     FooterComponent,
-    MemesLinguagensComponent
+    MemesLinguagensComponent,
+    FolhetoMercadoComponent
   ],
   imports: [
     BrowserModule,
