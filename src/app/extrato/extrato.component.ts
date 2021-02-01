@@ -8,14 +8,17 @@ import { ExtratoService } from './extrato.service';
 })
 export class ExtratoComponent implements OnInit {
 
-  transacoes = [];
+  transacoes: any;
 
   constructor(
     private extratoService: ExtratoService
   ) { }
 
   ngOnInit(): void {
-    this.transacoes = this.extratoService.getTransacoes();
+    this.extratoService.getTransacoes()
+      .subscribe(response => {
+        this.transacoes = response;
+      })
   }
 
 }

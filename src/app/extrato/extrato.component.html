@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container text-center pt-5">
     <table class="table">
         <tr>
             <th>ID</th>
@@ -10,9 +10,9 @@
 
         <tr *ngFor="let transacao of transacoes">
             <td> {{ transacao.id }} </td>
-            <td> {{ transacao.data }} </td>
+            <td> {{ transacao.data | date: 'dd-MM-yy'}} </td>
             <td> {{ transacao.descricao }} </td>
-            <td> {{ transacao.valor }} </td>
+            <td> {{ transacao.valor | currency: 'BRL'}} </td>
             <td> {{ transacao.categoria }} </td>
         </tr>
     </table>

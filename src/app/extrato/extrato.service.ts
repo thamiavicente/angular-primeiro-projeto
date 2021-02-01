@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,21 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class ExtratoService {
 
-  constructor() { }
+  constructor(
+    private http: HttpClient
+  ) { }
 
   getTransacoes() {
-    return [{
-      id: 1,
-      data: '2020-02-04T13:00:24,7442',
-      descricao: 'Salário',
-      valor: 3500,
-      categoria: 'Salário'
-    }, {
-      id: 2,
-      data: '2020-04-04T15:00:24,7442',
-      descricao: 'Camiseta Preta',
-      valor: -65,
-      categoria: 'Vestuário'
-    }]
+    return this.http.get('http://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes')
   }
 }

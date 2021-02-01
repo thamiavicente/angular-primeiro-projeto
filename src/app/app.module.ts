@@ -10,6 +10,7 @@ import { ExtratoComponent } from './extrato/extrato.component';
 import { LoginComponent } from './login/login.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
 
 registerLocaleData(localeFr, 'pt');
 
@@ -25,6 +26,7 @@ registerLocaleData(localeFr, 'pt');
     BrowserModule,
     AppRoutingModule,
     SharedModule,
+    HttpClientModule
   ],
   providers: [{
     provide: LOCALE_ID,
