@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Transacao } from './extrato.interfaces';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +12,6 @@ export class ExtratoService {
   ) { }
 
   getTransacoes() {
-    return this.http.get('http://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes')
+    return this.http.get<Transacao[]>('http://my-json-server.typicode.com/vitorfgsantos/fake-api/transacoes')
   }
 }
