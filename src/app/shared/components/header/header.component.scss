@@ -8,4 +8,23 @@
         margin: 0;
         font-size: 2rem;
     }
+
+    .nav-bar-list {
+        background-color: rgb(3, 75, 75);
+
+        li {
+            display: inline;
+
+            a {
+                display: inline-block;
+                color: white;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+        }
+
+        .ativado {
+            background-color: teal;
+        }
+    }
 }

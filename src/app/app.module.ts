@@ -10,6 +10,10 @@ import { HeaderComponent } from './shared/components/header/header.component';
 import { HomeComponent } from './home/home.component';
 import { MemesLinguagensComponent } from './shared/components/memes-linguagens/memes-linguagens.component';
 import { FolhetoMercadoComponent } from './shared/components/folheto-mercado/folheto-mercado.component';
+import { LoginComponent } from './login/login.component';
+import { ContadorComponent } from './shared/components/contador/contador.component';
+import { ExtratoComponent } from './extrato/extrato.component';
+import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 
 registerLocaleData(localeFr, 'pt');
 
@@ -20,7 +24,11 @@ registerLocaleData(localeFr, 'pt');
     HomeComponent,
     FooterComponent,
     MemesLinguagensComponent,
-    FolhetoMercadoComponent
+    FolhetoMercadoComponent,
+    LoginComponent,
+    ContadorComponent,
+    ExtratoComponent,
+    PaginaNaoEncontradaComponent
   ],
   imports: [
     BrowserModule,
