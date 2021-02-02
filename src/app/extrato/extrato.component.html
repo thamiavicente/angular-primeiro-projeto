@@ -1,5 +1,14 @@
 <div class="container text-center pt-5">
-    <table class="table">
+    <div class="spinner-grow text-info" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <div *ngIf="erroNoCarregamento">
+        <h2>Deu erro :(</h2>
+        <button (click)="carregarExtrato()" class="btn btn-info mt-4">Tentar novamente</button>
+    </div>
+
+    <table class="table" *ngIf="!estaCarregando && !erroNoCarregamento">
         <tr>
             <th>ID</th>
             <th>Data</th>

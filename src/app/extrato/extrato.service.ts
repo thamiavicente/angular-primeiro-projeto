@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Transacao } from './extrato.interfaces';
 
@@ -15,6 +16,7 @@ export class ExtratoService {
   ) { }
 
   getTransacoes() {
+    // return throwError(new Error('Erro de carregamento'));
     return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`)
   }
 }
