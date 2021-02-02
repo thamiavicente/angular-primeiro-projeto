@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { threadId } from 'worker_threads';
+import { finalize } from 'rxjs/operators';
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
 
@@ -28,6 +28,9 @@ export class ExtratoComponent implements OnInit {
     this.erroNoCarregamento = false;
 
     this.extratoService.getTransacoes()
+      .pipe (
+        finalize(() => this.estaCarregando = false)
+      )
       .subscribe(
         response => this.onSucess(response),
         error => this.onError(error)
@@ -35,12 +38,10 @@ export class ExtratoComponent implements OnInit {
   }
 
   onSucess(response: Transacao[]) {
-    this.estaCarregando = false;
     this.transacoes = response;
   }
 
   onError(error: any){
-    this.estaCarregando = false;
     this.erroNoCarregamento = true;
     console.error(error);
   }
