@@ -8,21 +8,29 @@
         <button (click)="carregarExtrato()" class="btn btn-info mt-4">Tentar novamente</button>
     </div>
 
-    <table class="table" *ngIf="!estaCarregando && !erroNoCarregamento">
-        <tr>
-            <th>ID</th>
-            <th>Data</th>
-            <th>Descrição</th>
-            <th>Valor</th>
-            <th>Categoria</th>
-        </tr>
+    <div *ngIf="!estaCarregando && !erroNoCarregamento">
+        <div class="botoes-paginacao mb-4">
+            <button class="btn btn-info" [disabled]="pagina === 1" (click)="paginaAnterior()"> &#10094; </button>
+            <h6 class="mx-3 my-auto">{{pagina}}</h6>
+            <button class="btn btn-info" (click)="paginaProxima()"> &#10095; </button>
+        </div>
 
-        <tr *ngFor="let transacao of transacoes">
-            <td> {{ transacao.id }} </td>
-            <td> {{ transacao.data | date: 'dd-MM-yy'}} </td>
-            <td> {{ transacao.descricao }} </td>
-            <td> {{ transacao.valor | currency: 'BRL'}} </td>
-            <td> {{ transacao.categoria }} </td>
-        </tr>
-    </table>
+        <table class="table">
+            <tr>
+                <th>ID</th>
+                <th>Data</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Categoria</th>
+            </tr>
+
+            <tr *ngFor="let transacao of transacoes">
+                <td> {{ transacao.id }} </td>
+                <td> {{ transacao.data | date: 'dd-MM-yy'}} </td>
+                <td> {{ transacao.descricao }} </td>
+                <td> {{ transacao.valor | currency: 'BRL'}} </td>
+                <td> {{ transacao.categoria }} </td>
+            </tr>
+        </table>
+    </div>
 </div>

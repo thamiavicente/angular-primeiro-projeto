@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize } from 'rxjs/operators';
+import { finalize, take } from 'rxjs/operators';
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
 
@@ -9,6 +9,8 @@ import { ExtratoService } from './extrato.service';
   styleUrls: ['./extrato.component.scss']
 })
 export class ExtratoComponent implements OnInit {
+
+  pagina = 1;
 
   transacoes: Array<Transacao>;
 
@@ -27,8 +29,11 @@ export class ExtratoComponent implements OnInit {
     this.estaCarregando = true;
     this.erroNoCarregamento = false;
 
-    this.extratoService.getTransacoes()
+    const page = 1;
+
+    this.extratoService.getTransacoes(this.pagina)
       .pipe (
+        take(1),
         finalize(() => this.estaCarregando = false)
       )
       .subscribe(
@@ -46,4 +51,13 @@ export class ExtratoComponent implements OnInit {
     console.error(error);
   }
 
+  paginaAnterior(){
+    this.pagina = this.pagina - 1;
+    this.carregarExtrato();
+  }
+
+  paginaProxima(){
+    this.pagina = this.pagina + 1;
+    this.carregarExtrato();
+  }
 }

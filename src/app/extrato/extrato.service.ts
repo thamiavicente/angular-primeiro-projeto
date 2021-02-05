@@ -16,11 +16,15 @@ export class ExtratoService {
     private http: HttpClient
   ) { }
 
-  getTransacoes() {
+  getTransacoes(pagina: number) {
     // Simular erro
     // const error = throwError(new Error('Erro de carregamento'));
     // return timer(3000).pipe(mergeMap(() => error));
 
-    return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`)
+    return this.http.get<Transacao[]>(`${this.API_URL}/transacoes`, {
+      params: {
+        _page: String(pagina),
+      }
+    })
   }
 }
