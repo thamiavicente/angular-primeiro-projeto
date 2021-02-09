@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     if (form.invalid) {
       form.controls.email.markAsTouched();
       form.controls.password.markAsTouched();
-      console.log(form);
       return
     }
   }
