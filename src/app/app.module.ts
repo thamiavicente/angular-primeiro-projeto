@@ -15,6 +15,7 @@ import { ContatosComponent } from './contatos/contatos.component';
 import { DetalhesContatosComponent } from './contatos/detalhes-contatos/detalhes-contatos.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeFr, 'pt');
 
@@ -33,7 +34,8 @@ registerLocaleData(localeFr, 'pt');
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    FormsModule
   ],
   providers: [{
     provide: LOCALE_ID,

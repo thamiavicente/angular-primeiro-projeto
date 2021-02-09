@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { Contato } from './contatos.interfaces';
@@ -10,15 +10,33 @@ export class ContatosService {
 
   API_URL = environment.API_URL;
 
+  htttpOptions = {
+    headers: new HttpHeaders({
+      Authorization: '..... Token de Autenticação .....'
+    })
+  }
+
   constructor(
     private http: HttpClient
     ) {}
 
   getContatos() {
-    return this.http.get<Contato[]>(`${this.API_URL}/contatos`)
+    return this.http.get<Contato[]>(`${this.API_URL}/contatos`);
   }
 
   getContato(id: string) {
-    return this.http.get<Contato>(`${this.API_URL}/contatos/${id}`)
+    return this.http.get<Contato>(`${this.API_URL}/contatos/${id}`, this.htttpOptions);
+  }
+
+  postContato(contato: Contato) {
+    return this.http.post<Contato[]>(`${this.API_URL}/contatos/`, contato, this.htttpOptions);
+  }
+
+  putContato(id: string, contato: Contato) {
+    return this.http.put<Contato[]>(`${this.API_URL}/contatos/${id}`, contato, this.htttpOptions);
+  }
+
+  deleteContato(id: string) {
+    return this.http.delete<Contato>(`${this.API_URL}/contatos/${id}`, this.htttpOptions);
   }
 }
