@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { finalize, take } from 'rxjs/operators';
 import { Transacao } from './extrato.interfaces';
 import { ExtratoService } from './extrato.service';
+import { faLongArrowAltRight, faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-extrato',
@@ -9,6 +10,9 @@ import { ExtratoService } from './extrato.service';
   styleUrls: ['./extrato.component.scss']
 })
 export class ExtratoComponent implements OnInit {
+
+  faLongArrowAltRight = faLongArrowAltRight;
+  faLongArrowAltLeft = faLongArrowAltLeft;
 
   pagina = 1;
 

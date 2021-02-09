@@ -10,9 +10,9 @@
 
     <div *ngIf="!estaCarregando && !erroNoCarregamento">
         <div class="botoes-paginacao mb-4">
-            <button class="btn btn-info" [disabled]="pagina === 1" (click)="paginaAnterior()"> &#10094; </button>
+            <button class="btn btn-info" [disabled]="pagina === 1" (click)="paginaAnterior()"><fa-icon [icon]="faLongArrowAltLeft"></fa-icon></button>
             <h6 class="mx-3 my-auto">{{pagina}}</h6>
-            <button class="btn btn-info" (click)="paginaProxima()"> &#10095; </button>
+            <button class="btn btn-info" (click)="paginaProxima()"><fa-icon [icon]="faLongArrowAltRight"></fa-icon></button>
         </div>
 
         <table class="table">
