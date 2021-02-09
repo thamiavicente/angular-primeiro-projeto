@@ -14,20 +14,15 @@
             <tr>
                 <th>ID</th>
                 <th>Nome</th>
-                <th>CPF</th>
-                <th>Banco</th>
-                <th>Agência</th>
-                <th>Conta Corrente</th>
+                <th></th>
             </tr>
 
             <tr *ngFor="let contato of contatos">
                 <td> {{ contato.id }} </td>
                 <td> {{ contato.nome }} </td>
-                <td> {{ contato.cpf }} </td>
-                <td> {{ contato.banco }} </td>
-                <td> {{ contato.ag }} </td>
-                <td> {{ contato.cc }} </td>
-
+                <td>
+                    <button class="btn btn-info" (click)="abrirDetalhes(contato.id)">Ver detalhes</button>
+                </td>
             </tr>
         </table>
     </div>

@@ -1,0 +1,21 @@
+<div class="container text-center pt-5">
+    <div class="spinner-grow text-info" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <div *ngIf="erroNoCarregamento">
+        <h2>Deu erro :(</h2>
+        <button (click)="carregarContato()" class="btn btn-info mt-4">Tentar novamente</button>
+    </div>
+
+    <div *ngIf="!estaCarregando && !erroNoCarregamento">
+        <p><b>ID</b>: {{ contato.id }}</p>
+        <p><b>Nome</b>: {{ contato.nome }}</p>
+        <p><b>CPF</b>: {{ contato.cpf }}</p>
+        <p><b>Banco</b>: {{ contato.banco }}</p>
+        <p><b>Agência</b>: {{ contato.ag }}</p>
+        <p><b>Conta Corrente</b>: {{ contato.cc }}</p>
+        
+        <button class="btn btn-info mt-3" (click)="voltar()"><fa-icon [icon]="faLongArrowAltLeft"></fa-icon></button>
+    </div>
+</div>

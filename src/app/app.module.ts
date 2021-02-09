@@ -12,6 +12,9 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ContatosComponent } from './contatos/contatos.component';
+import { DetalhesContatosComponent } from './contatos/detalhes-contatos/detalhes-contatos.component';
+
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 registerLocaleData(localeFr, 'pt');
 
@@ -22,13 +25,15 @@ registerLocaleData(localeFr, 'pt');
     ExtratoComponent,
     LoginComponent,
     PaginaNaoEncontradaComponent,
-    ContatosComponent
+    ContatosComponent,
+    DetalhesContatosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
-    HttpClientModule
+    HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [{
     provide: LOCALE_ID,
