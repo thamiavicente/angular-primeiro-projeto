@@ -3,11 +3,20 @@
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt-5">
 
         <div class="p-2">
-            <input type="email" class="form-control" placeholder="Email" name="email" ngModel>
+            <input
+            type="email" class="form-control"
+            placeholder="Email" name="email"
+            [(ngModel)]="email" email required />
+            <span class="alertError" *ngIf="exibeErro('email', form)"> E-mail inválido</span>
         </div>
 
         <div class="p-2">
-            <input type="password" class="form-control" placeholder="Senha" name="password" ngModel>
+            <input
+            type="password" class="form-control"
+            placeholder="Senha" name="password"
+            [(ngModel)]="password" required />
+            <span class="alertError" *ngIf="exibeErro('password', form)"> Senha inválida</span>
+
         </div>
 
         <div class="p-2">
