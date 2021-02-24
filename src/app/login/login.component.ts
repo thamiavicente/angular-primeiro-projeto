@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
+import { finalize, take } from 'rxjs/operators';
+import { LoginService } from './login.service';
 
 @Component({
   selector: 'app-login',
@@ -8,23 +11,67 @@ import { FormGroup } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  @ViewChild('emailInput') emailInput: ElementRef;
+  @ViewChild('passwordInput') passwordInput: ElementRef;
+
   email: string;
   password: string;
+  estaCarregando: boolean;
+  erroNoLogin: boolean;
 
-  constructor() { }
+  constructor(
+    private loginService: LoginService,
+    private router: Router,
+  ) { }
 
   ngOnInit(): void {
   }
 
   onSubmit(form){
+    this.erroNoLogin = false;
+
     if (form.invalid) {
       form.controls.email.markAsTouched();
       form.controls.password.markAsTouched();
+
+      if(form.controls.email.invalid) {
+        this.emailInput.nativeElement.focus();
+        return;
+      }
+
+      if(form.controls.password.invalid) {
+        this.passwordInput.nativeElement.focus();
+        return;
+      }
+
       return
     }
+
+    this.login();
   }
 
-  exibeErro(nomeControle: string, form: FormGroup) {
+  login() {
+    this.estaCarregando = true;
+    this.loginService.logar(this.email, this.password)
+      .pipe (
+        take(1),
+        finalize(() => this.estaCarregando = false)
+      )
+      .subscribe(
+        response => this.onSucessLogin(),
+        error => this.onErrorLogin(),
+      )
+  }
+
+  onSucessLogin() {
+    this.router.navigate(['home']);
+  }
+
+  onErrorLogin() {
+    this.erroNoLogin = true;
+  }
+
+  exibeErro(nomeControle: string, form: NgForm) {
     if(!form.controls[nomeControle]){
       return false;
     }

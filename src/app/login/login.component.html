@@ -1,5 +1,9 @@
 <div class="text-center">
 
+    <div class="spinner-grow text-info mt-5" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    </div>
+
     <form #form="ngForm" (ngSubmit)="onSubmit(form)" class="form-signin pt-5">
 
         <div class="p-2">
@@ -7,7 +11,7 @@
             type="email" class="form-control"
             placeholder="Email" name="email"
             [(ngModel)]="email" email required
-            [class.is-invalid]="exibeErro('email', form)" />
+            [class.is-invalid]="exibeErro('email', form)" #emailInput/>
             <span class="invalid-feedback" *ngIf="exibeErro('email', form)"> E-mail inválido</span>
         </div>
 
@@ -16,13 +20,15 @@
             type="password" class="form-control"
             placeholder="Senha" name="password"
             [(ngModel)]="password" required
-            [ngClass]="exibeErro('email', form) ? 'is-invalid' : '' " />
+            [class.is-invalid]="exibeErro('password', form)" #passwordInput/>
             <span class="invalid-feedback" *ngIf="exibeErro('password', form)"> Senha inválida</span>
 
         </div>
 
+        <span class="alertError" *ngIf="erroNoLogin">Usuário ou senha inválidos.</span>
+
         <div class="p-2">
-            <button class="btn btn-lg btn-info btn-block" type="submit">Entrar</button>
+            <button class="btn btn-lg btn-info btn-block" type="submit" [disabled]="estaCarregando">Entrar</button>
         </div> 
     </form> 
 </div>
