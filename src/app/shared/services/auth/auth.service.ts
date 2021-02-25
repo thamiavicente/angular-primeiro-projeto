@@ -33,6 +33,7 @@ export class AuthService {
 
   setToken(token: string){
     this.token = token;
+    localStorage.setItem('token', token);
   }
 
   getToken() {
@@ -48,6 +49,10 @@ export class AuthService {
     }
 
     return null;
+  }
+
+  estaLogado(): boolean {
+    return this.getUsuario() && this.getToken() ? true : false;
   }
 
 }
