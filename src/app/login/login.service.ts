@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-import { Contato } from '../contatos/contatos.interfaces';
+import { Contato } from '../area-logada/contatos/contatos.interfaces';
 import { Observable, of, throwError, timer } from 'rxjs';
 import { delay, mergeMap, tap } from 'rxjs/operators';
 import { AuthService } from '../shared/services/auth/auth.service';

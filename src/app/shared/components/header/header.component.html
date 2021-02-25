@@ -1,8 +1,17 @@
 <header class="header">
     <h1 class="header__title">{{ title }}</h1>
-        <ul class="nav-bar-list mt-4">
-            <li><a routerLink="/home" routerLinkActive="ativado">Home</a></li>
-            <li><a routerLink="/extrato" routerLinkActive="ativado">Extrato</a></li>
-            <li><a routerLink="/contatos" routerLinkActive="ativado">Contatos</a></li>
-        </ul>
+    <ul class="nav-bar-list mt-4">
+        <li>
+            <a routerLink="/home" routerLinkActive="ativado">Home</a>
+        </li>
+        <li>
+            <a routerLink="/extrato" routerLinkActive="ativado">Extrato</a>
+        </li>
+        <li>
+            <a routerLink="/contatos" routerLinkActive="ativado">Contatos</a>
+        </li>
+        <li>
+            <button class="btn btn-info" (click)="logout()">Logout</button>
+        </li>
+    </ul>
 </header>
