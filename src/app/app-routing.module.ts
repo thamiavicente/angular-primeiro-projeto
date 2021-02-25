@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ExtratoComponent } from './extrato/extrato.component';
 import { LoginComponent } from './login/login.component';
 import { EstaLogadoGuard } from './shared/guards/esta-logado/esta-logado.guard';
 import { NaoEstaLogadoGuard } from './shared/guards/nao-esta-logado/nao-esta-logado.guard';
@@ -19,7 +18,7 @@ const routes: Routes = [{
   canActivate: [NaoEstaLogadoGuard],
 }, {
   path: 'extrato',
-  component: ExtratoComponent,
+  loadChildren: () => import ('./extrato/extrato.module').then(m => m.ExtratoModule),
   canActivate: [EstaLogadoGuard],
 
 }, {

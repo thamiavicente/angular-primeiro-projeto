@@ -12,7 +12,6 @@ import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
 
 registerLocaleData(localeFr, 'pt');
@@ -21,14 +20,12 @@ registerLocaleData(localeFr, 'pt');
   declarations: [
     AppComponent,
     LoginComponent,
-    ExtratoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     SharedModule,
     HttpClientModule,
-    FontAwesomeModule,
     FormsModule
   ],
   providers: [{
