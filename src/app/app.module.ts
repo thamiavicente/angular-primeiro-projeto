@@ -11,8 +11,6 @@ import { LoginComponent } from './login/login.component';
 import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { ContatosComponent } from './contatos/contatos.component';
-import { DetalhesContatosComponent } from './contatos/detalhes-contatos/detalhes-contatos.component';
 
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FormsModule } from '@angular/forms';
@@ -22,12 +20,8 @@ registerLocaleData(localeFr, 'pt');
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    ExtratoComponent,
     LoginComponent,
-    PaginaNaoEncontradaComponent,
-    ContatosComponent,
-    DetalhesContatosComponent
+    ExtratoComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,17 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ExtratoComponent } from './extrato/extrato.component';
-import { ContatosComponent } from './contatos/contatos.component';
-import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
-import { PaginaNaoEncontradaComponent } from './pagina-nao-encontrada/pagina-nao-encontrada.component';
-import { DetalhesContatosComponent } from './contatos/detalhes-contatos/detalhes-contatos.component';
 import { EstaLogadoGuard } from './shared/guards/esta-logado/esta-logado.guard';
 import { NaoEstaLogadoGuard } from './shared/guards/nao-esta-logado/nao-esta-logado.guard';
 
 const routes: Routes = [{
+    path: '',
+    redirectTo: 'home',
+    pathMatch: 'full',
+},{
   path: 'home',
-  component: HomeComponent,
+  loadChildren: () => import ('./home/home.module').then(m => m.HomeModule),
   canActivate: [EstaLogadoGuard],
 }, {
   path: 'login',
@@ -24,21 +24,11 @@ const routes: Routes = [{
 
 }, {
   path: 'contatos',
-  component: ContatosComponent,
+  loadChildren: () => import ('./contatos/contatos.module').then(m => m.ContatosModule),
   canActivate: [EstaLogadoGuard],
-
-}, {
-  path: 'contatos/:id',
-  component: DetalhesContatosComponent,
-  canActivate: [EstaLogadoGuard],
-
-}, {
-  path: '',
-  redirectTo: 'home',
-  pathMatch: 'full',
 }, {
   path: '**',
-  component: PaginaNaoEncontradaComponent,
+  loadChildren: () => import ('./pagina-nao-encontrada/pagina-nao-encontrada.module').then(m => m.PaginaNaoEncontradaModule),
 }];
 
 @NgModule({
