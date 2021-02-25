@@ -6,11 +6,11 @@ import { ContatosService } from '../contatos.service';
 import { faLongArrowAltLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-detalhes-contatos',
-  templateUrl: './detalhes-contatos.component.html',
-  styleUrls: ['./detalhes-contatos.component.scss']
+  selector: 'app-detalhar-contatos',
+  templateUrl: './detalhar-contatos.component.html',
+  styleUrls: ['./detalhar-contatos.component.scss']
 })
-export class DetalhesContatosComponent implements OnInit {
+export class DetalharContatosComponent implements OnInit {
 
   contato: Contato;
   estaCarregando: boolean;
