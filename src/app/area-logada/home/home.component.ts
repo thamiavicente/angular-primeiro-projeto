@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { AuthService } from '../../shared/services/auth/auth.service';
 
 @Component({
@@ -13,10 +14,19 @@ export class HomeComponent implements OnInit {
   
   constructor(
     private authService: AuthService,
+    private modalService: NgbModal
   ) { }
 
   ngOnInit() {
     this.usuario = this.authService.getUsuario();
+  }
+
+  abrirModal(content){
+    this.modalService.open(content).result.then((result) => {
+      console.log('Modal fechado');
+    }, (reason) => {
+      console.log('Modal cancelado');
+    });
   }
 
 }
