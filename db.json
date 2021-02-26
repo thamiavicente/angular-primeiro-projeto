@@ -3,6 +3,7 @@
     {
       "id": "1",
       "nome": "Veronica",
+      "email": "veronica@email.com",
       "cpf": "12365923089",
       "banco": "nubank",
       "ag": "349782-0",
@@ -11,6 +12,7 @@
     {
       "id": "2",
       "nome": "Milena",
+      "email": "milena@email.com",
       "cpf": "197027593789",
       "banco": "itau",
       "ag": "275924-4",
@@ -19,6 +21,7 @@
     {
       "id": "3",
       "nome": "Simone",
+      "email": "simone@email.com",
       "cpf": "123987456789",
       "banco": "bradesco",
       "ag": "123765-7",
