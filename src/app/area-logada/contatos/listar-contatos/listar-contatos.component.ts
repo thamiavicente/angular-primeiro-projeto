@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { finalize, take } from 'rxjs/operators';
 import { Contato } from '../contatos.interfaces';
 import { ContatosService } from '../contatos.service';
@@ -19,6 +20,7 @@ export class ListarContatosComponent implements OnInit {
   constructor(
     private contatosService: ContatosService,
     private router: Router,
+    private toastr: ToastrService,
   ) { }
 
   ngOnInit(): void {
@@ -35,16 +37,16 @@ export class ListarContatosComponent implements OnInit {
         finalize(() => this.estaCarregando = false)
       )
       .subscribe(
-        response => this.onSucess(response),
-        error => this.onError(error)
+        response => this.onSucessCarregarContato(response),
+        error => this.onErrorCarregarContato(error)
       );
   }
 
-  onSucess(response: Contato[]) {
+  onSucessCarregarContato(response: Contato[]) {
     this.contatos = response;
   }
 
-  onError(error: any){
+  onErrorCarregarContato(error: any){
     this.erroNoCarregamento = true;
     console.error(error);
   }
@@ -53,4 +55,20 @@ export class ListarContatosComponent implements OnInit {
     this.router.navigate([`contatos/${idContato}`]);
   }
 
+  deletarContato(idContato: string){
+    this.contatosService.deleteContato(idContato)
+    .subscribe(
+      response => this.onSucessDeletarContato(idContato),
+      error => this.onErrorDeletarContato()
+    );
+  }
+
+  onSucessDeletarContato (idContato : string) {
+    this.toastr.success('Tchau tchau!', 'Contato deletado com sucesso');
+    this.contatos = this.contatos.filter(contato => contato.id !== idContato);
+  }
+
+  onErrorDeletarContato () {
+    console.log('Erro ao deletar contato');
+  }
 }

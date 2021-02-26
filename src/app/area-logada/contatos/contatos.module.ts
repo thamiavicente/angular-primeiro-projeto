@@ -4,6 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ContatosRoutingModule } from './contatos-routing.module';
 import { ListarContatosComponent } from './listar-contatos/listar-contatos.component';
 import { DetalharContatosComponent } from './detalhar-contatos/detalhar-contatos.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 
 @NgModule({
@@ -13,7 +14,8 @@ import { DetalharContatosComponent } from './detalhar-contatos/detalhar-contatos
   ],
   imports: [
     CommonModule,
-    ContatosRoutingModule
+    ContatosRoutingModule,
+    FontAwesomeModule,
   ]
 })
 export class ContatosModule { }

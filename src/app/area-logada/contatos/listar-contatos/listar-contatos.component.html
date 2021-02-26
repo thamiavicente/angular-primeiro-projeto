@@ -21,7 +21,8 @@
                 <td> {{ contato.id }} </td>
                 <td> {{ contato.nome }} </td>
                 <td>
-                    <button class="btn btn-info" (click)="abrirDetalhes(contato.id)">Ver detalhes</button>
+                    <button class="btn btn-info mx-2" (click)="abrirDetalhes(contato.id)">Detalhes</button>
+                    <button class="btn btn-danger mx-2" (click)="deletarContato(contato.id)">Deletar</button>
                 </td>
             </tr>
         </table>
