@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://my-json-server.typicode.com/vitorfgsantos/fake-api',
+  API_URL: 'http://localhost:3000',
 };
 
 /*
