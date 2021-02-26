@@ -1,0 +1,21 @@
+<div class="container pt-5">
+    <form [formGroup]="contatoForm">
+        <div class="form-group">
+            <label for="nome">Nome</label>
+            <input type="text" class="form-control" id="nome" placeholder="Nome" formControlName="nome" />
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Email" formControlName="email" />
+        </div>
+
+        <div class="form-group">
+            <label for="banco">Banco</label>
+            <input type="text" class="form-control" id="banco" placeholder="Banco" formControlName="banco" />
+        </div>
+
+        <button class="btn btn-info mx-auto d-flex" (click)="salvarContato()">Salvar</button>
+
+    </form>
+</div>
