@@ -23,12 +23,33 @@ export class NovoContatoComponent implements OnInit {
     this.contatoForm = this.formBuilder.group({
       nome: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
+      cpf: ['', Validators.required],
       banco: ['', Validators.required],
+      ag: ['', Validators.required],
+      cc: ['', Validators.required],
     });
   }
 
+  validateAllFormFields() {
+    Object.keys(this.contatoForm.controls).forEach(field => {
+      const control = this.contatoForm.get(field);
+      control.markAllAsTouched();
+    })
+  }
+
   salvarContato() {
+    if (this.contatoForm.invalid) {
+      this.validateAllFormFields();
+
+      return
+    }
     console.log(this.contatoForm);
   }
 
+  exibeErro(nomeControle: string) {
+    if(!this.contatoForm.get(nomeControle)){
+      return false;
+    }
+    return this.contatoForm.get(nomeControle).invalid && this.contatoForm.get(nomeControle).touched;
+  }
 }
