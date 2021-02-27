@@ -64,7 +64,7 @@ export class ListarContatosComponent implements OnInit {
   }
 
   onSucessDeletarContato (idContato : string) {
-    this.toastr.success('Tchau tchau!', 'Contato deletado com sucesso');
+    this.toastr.success('Contato deletado com sucesso', 'Tchau Tchau!');
     this.contatos = this.contatos.filter(contato => contato.id !== idContato);
   }
 
