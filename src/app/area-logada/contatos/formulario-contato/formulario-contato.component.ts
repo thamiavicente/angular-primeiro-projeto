@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ContatosService } from '../contatos.service';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -49,9 +49,11 @@ export class FormularioContatoComponent implements OnInit {
       nome: ['', Validators.required],
       email: ['', [Validators.email, Validators.required]],
       cpf: ['', Validators.required],
-      banco: ['', Validators.required],
-      ag: ['', Validators.required],
-      cc: ['', Validators.required],
+      dadosBancarios: this.formBuilder.group({
+        banco: ['', Validators.required],
+        ag: ['', Validators.required],
+        cc: ['', Validators.required],
+      }),
     });
   }
 
@@ -86,22 +88,26 @@ export class FormularioContatoComponent implements OnInit {
     return this.contatoForm.get(nomeControle).invalid && this.contatoForm.get(nomeControle).touched;
   }
 
-  validateAllFormFields() {
-    Object.keys(this.contatoForm.controls).forEach(field => {
-      const control = this.contatoForm.get(field);
-      control.markAsTouched();
+  validaCamposFormulario(form: FormGroup) {
+    Object.keys(form.controls).forEach(field => {
+      const control = form.get(field);
+      if (control instanceof FormControl){
+        control.markAsTouched();
+      } else if (control instanceof FormGroup){
+        this.validaCamposFormulario(control);
+      }
     });
   }
 
   onSubmit() {
     if (this.contatoForm.invalid) {
-      this.validateAllFormFields();
-      // return;
+      this.validaCamposFormulario(this.contatoForm);
+      return;
     }
 
-    if (this.estaEditando){
+    if (this.estaEditando()){
       this.salvarContato();
-      //return;
+      return;
     }
 
     this.criarContato();

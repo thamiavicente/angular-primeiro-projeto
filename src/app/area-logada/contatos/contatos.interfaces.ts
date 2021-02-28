@@ -3,7 +3,9 @@ export interface Contato {
     nome: string,
     email: string,
     cpf: string,
-    banco: String, 
-    ag: string,
-    cc: string,
+    dadosBancarios: {
+        banco: String, 
+        ag: string,
+        cc: string,
+    }
 }
