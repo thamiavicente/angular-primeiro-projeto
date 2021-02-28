@@ -46,7 +46,6 @@ export class DetalharContatosComponent implements OnInit {
 
   onSucess(response: Contato) {
     this.contato = response;
-    console.log(this.contato);
   }
 
   onError(error: any){

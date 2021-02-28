@@ -33,7 +33,7 @@ export class ContatosService {
   }
 
   putContato(id: string, contato: Contato) {
-    return this.http.put<Contato[]>(`${this.API_URL}/contatos/${id}`, contato, this.httpOptions);
+    return this.http.put<Contato>(`${this.API_URL}/contatos/${id}`, contato, this.httpOptions);
   }
 
   deleteContato(id: string) {

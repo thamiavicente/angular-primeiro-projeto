@@ -55,6 +55,10 @@ export class ListarContatosComponent implements OnInit {
     this.router.navigate([`contatos/${idContato}`]);
   }
 
+  abrirEditarContato(idContato: string){
+    this.router.navigate([`contatos/${idContato}/editar`]);
+  }
+
   deletarContato(idContato: string){
     this.contatosService.deleteContato(idContato)
     .subscribe(

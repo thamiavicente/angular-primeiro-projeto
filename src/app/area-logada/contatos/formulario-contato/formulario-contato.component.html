@@ -1,5 +1,14 @@
 <div class="container pt-5">
-    <form [formGroup]="contatoForm">
+    <div class="spinner-grow text-info" role="status" *ngIf="estaCarregando">
+        <span class="sr-only">Loading...</span>
+    </div>
+
+    <div *ngIf="erroNoCarregamento" class="text-center">
+        <h2>Deu erro :(</h2>
+        <button (click)="carregarContato()" class="btn btn-info mt-4">Tentar novamente</button>
+    </div>
+
+    <form [formGroup]="contatoForm" *ngIf="!estaCarregando && !erroNoCarregamento">
         <div class="form-group">
             <label for="nome">Nome</label>
             <input
@@ -11,7 +20,7 @@
         <div class="form-group">
             <label for="cpf">CPF</label>
             <input
-            type="number" class="form-control" id="cpf"
+            type="text" class="form-control" id="cpf"
             placeholder="CPF" formControlName="cpf"
             [class.is-invalid]="exibeErro('cpf')" />
         </div>
@@ -35,7 +44,7 @@
         <div class="form-group">
             <label for="ag">Agência</label>
             <input
-            type="number" class="form-control" id="ag"
+            type="text" class="form-control" id="ag"
             placeholder="Agência" formControlName="ag"
             [class.is-invalid]="exibeErro('ag')" />
         </div>
@@ -43,7 +52,7 @@
         <div class="form-group">
             <label for="cc">Conta Corrente</label>
             <input
-            type="number" class="form-control" id="cc"
+            type="text" class="form-control" id="cc"
             placeholder="Conta Corrente" formControlName="cc"
             [class.is-invalid]="exibeErro('cc')" />
         </div>
