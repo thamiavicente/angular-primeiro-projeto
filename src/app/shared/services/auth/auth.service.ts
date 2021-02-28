@@ -48,7 +48,7 @@ export class AuthService {
     const tokenGuardado = localStorage.getItem('token');
     if (tokenGuardado) {
       this.token = tokenGuardado;
-      return this.usuario;
+      return this.token;
     }
 
     return null;

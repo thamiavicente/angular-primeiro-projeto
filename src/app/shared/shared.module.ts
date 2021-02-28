@@ -7,6 +7,8 @@ import { MemesLinguagensComponent } from './components/memes-linguagens/memes-li
 import { FolhetoMercadoComponent } from './components/folheto-mercado/folheto-mercado.component';
 import { ContadorComponent } from './components/contador/contador.component';
 import { RouterModule } from '@angular/router';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -27,5 +29,10 @@ import { RouterModule } from '@angular/router';
     FolhetoMercadoComponent,
     ContadorComponent,
   ],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true,
+  }]
 })
 export class SharedModule { }

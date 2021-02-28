@@ -10,14 +10,8 @@ export class ContatosService {
 
   API_URL = environment.API_URL;
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      Authorization: '..... Token de Autenticação .....'
-    })
-  }
-
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
     ) {}
 
   getContatos() {
@@ -25,18 +19,18 @@ export class ContatosService {
   }
 
   getContato(id: string) {
-    return this.http.get<Contato>(`${this.API_URL}/contatos/${id}`, this.httpOptions);
+    return this.http.get<Contato>(`${this.API_URL}/contatos/${id}`);
   }
 
   postContato(contato: Contato) {
-    return this.http.post<Contato[]>(`${this.API_URL}/contatos/`, contato, this.httpOptions);
+    return this.http.post<Contato[]>(`${this.API_URL}/contatos/`, contato);
   }
 
   putContato(id: string, contato: Contato) {
-    return this.http.put<Contato>(`${this.API_URL}/contatos/${id}`, contato, this.httpOptions);
+    return this.http.put<Contato>(`${this.API_URL}/contatos/${id}`, contato);
   }
 
   deleteContato(id: string) {
-    return this.http.delete<Contato>(`${this.API_URL}/contatos/${id}`, this.httpOptions);
+    return this.http.delete<Contato>(`${this.API_URL}/contatos/${id}`);
   }
 }
